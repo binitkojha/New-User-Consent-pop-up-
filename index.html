@@ -344,21 +344,16 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // On page load, check if user already accepted terms
+        // On page load, always show the popup
         window.onload = function() {
-            const hasAccepted = sessionStorage.getItem('altametrics_terms_accepted');
+            // By default, show popup and ensure login is dimmed
+            showPopup();
             
-            if (hasAccepted === 'true') {
-                // If they already accepted in this session, go straight to home screen
-                document.getElementById('popup-wrapper').style.display = 'none';
-                document.getElementById('login-view').classList.add('hidden');
-                document.getElementById('login-view').classList.remove('flex');
-                document.getElementById('home-view').classList.remove('hidden');
-                document.getElementById('home-view').classList.add('flex');
-            } else {
-                // By default, show popup (which is already set in HTML), ensure login is dimmed
-                showPopup();
-            }
+            // Ensure login view is visible and home view is hidden to handle soft reloads
+            document.getElementById('login-view').classList.remove('hidden');
+            document.getElementById('login-view').classList.add('flex');
+            document.getElementById('home-view').classList.add('hidden');
+            document.getElementById('home-view').classList.remove('flex');
         };
 
         // Helper to show popup and dim login
@@ -377,9 +372,6 @@
 
         // Handle Accept Action
         function handleAccept() {
-            // Save state so a refresh keeps them logged in
-            sessionStorage.setItem('altametrics_terms_accepted', 'true');
-
             // Hide Popup
             document.getElementById('popup-wrapper').style.display = 'none';
             
