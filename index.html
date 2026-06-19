@@ -28,18 +28,18 @@
 <body class="min-h-screen bg-gray-900 flex items-center justify-center p-4 font-sans text-gray-800">
 
     <!-- iPhone 16 Frame Container -->
-    <div class="relative w-full max-w-[393px] h-[852px] bg-[#2d313c] rounded-[3rem] overflow-hidden shadow-[0_0_0_12px_#111,0_20px_50px_rgba(0,0,0,0.5)] flex flex-col">
+    <div class="relative w-full max-w-[393px] h-[852px] bg-[#393e4f] rounded-[3rem] overflow-hidden shadow-[0_0_0_12px_#111,0_20px_50px_rgba(0,0,0,0.5)] flex flex-col">
         
         <!-- iOS Status Bar -->
-        <div class="flex justify-between items-center px-8 pt-4 pb-2 text-white text-[15px] font-medium z-10 shrink-0">
-           <span class="tracking-tight ml-1">10:39</span>
+        <div class="flex justify-between items-center px-8 pt-4 pb-2 text-white text-[15px] font-medium z-20 shrink-0 absolute top-0 w-full pointer-events-none">
+           <span class="tracking-tight ml-1">16:28</span>
            <div class="flex items-center space-x-1.5 mr-1">
              <!-- Cellular -->
              <div class="flex space-x-[2px] items-end h-2.5 mb-0.5">
                <div class="w-[3px] h-1.5 bg-white rounded-sm"></div>
                <div class="w-[3px] h-2 bg-white rounded-sm"></div>
                <div class="w-[3px] h-2.5 bg-white rounded-sm"></div>
-               <div class="w-[3px] h-3 bg-white/40 rounded-sm"></div>
+               <div class="w-[3px] h-3 bg-white rounded-sm"></div>
              </div>
              <!-- Battery -->
              <div class="flex items-center ml-1">
@@ -51,69 +51,171 @@
            </div>
         </div>
 
-        <!-- Background App UI -->
-        <!-- Note: Has opacity-30 and pointer-events-none initially because popup is open -->
-        <div id="main-content" class="flex-grow px-6 flex flex-col transition-opacity duration-300 opacity-30 pointer-events-none">
+        <!-- ========================================== -->
+        <!-- VIEW 1: LOGIN SCREEN (Behind Popup Initially)-->
+        <!-- ========================================== -->
+        <div id="login-view" class="flex-grow px-6 pt-12 flex flex-col transition-opacity duration-300 opacity-30 pointer-events-none bg-[#393e4f]">
           
-          <!-- Header -->
-          <header class="flex justify-between items-center py-6 border-b border-gray-700/50">
+          <!-- Login Header -->
+          <header class="flex justify-between items-center py-4">
             <div class="flex items-center space-x-2">
-              <div class="w-8 h-8 rounded-full border-2 border-white/80 flex items-center justify-center">
-                 <span class="text-white/80 font-bold text-xs">A</span>
-              </div>
-              <div class="flex flex-col">
-                 <span class="text-white font-bold text-lg leading-tight">Altametrics</span>
-                 <span class="text-blue-400 text-[10px] uppercase font-bold tracking-wider">Growth <span class="text-gray-400 font-normal lowercase tracking-normal">v10.1</span></span>
-              </div>
+                <!-- Altametrics Logo using generated SVG/text (Light version for dark bg) -->
+                <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="20" cy="20" r="18" stroke="#ffffff" stroke-width="2.5"/>
+                  <path d="M20 8L10 28H15L20 16L25 28H30L20 8Z" fill="#ffffff"/>
+                </svg>
+                <div class="flex flex-col">
+                  <span class="text-[17px] font-bold text-white leading-none tracking-tight">Altametrics</span>
+                  <span class="text-[9px] text-gray-300 font-bold tracking-widest text-right leading-tight mt-[1px]">GROWTH</span>
+                </div>
             </div>
-            <button class="p-2 text-indigo-400 hover:text-indigo-300 transition-colors">
-              <i data-lucide="menu" class="w-7 h-7" style="stroke-width: 2.5px;"></i>
-            </button>
+            <div class="flex items-center space-x-4">
+               <span class="text-gray-300 text-xs mt-1">v 14.0</span>
+               <button class="p-1 text-[#38bdf8]">
+                 <i data-lucide="menu" class="w-7 h-7" style="stroke-width: 2px;"></i>
+               </button>
+            </div>
           </header>
 
-          <!-- Dummy Content -->
-          <main class="flex-grow py-8 space-y-6">
-            <div class="bg-[#3a3f4d] rounded-2xl p-5 shadow-lg border border-gray-600/30">
-               <h3 class="text-white font-semibold mb-4 text-lg">Dashboard Overview</h3>
-               <div class="space-y-4">
-                  <div class="h-4 bg-gray-600/50 rounded-full w-3/4"></div>
-                  <div class="h-4 bg-gray-600/50 rounded-full w-1/2"></div>
-                  <div class="h-4 bg-gray-600/50 rounded-full w-5/6"></div>
+          <!-- Login Form Content -->
+          <main class="flex-grow flex flex-col items-center justify-center pb-20">
+            <!-- Zip Schedules Logo -->
+            <div class="flex flex-col items-center mb-16">
+                <i data-lucide="calendar-clock" class="text-white w-16 h-16 mb-3" style="stroke-width: 1.5px;"></i>
+                <div class="text-[32px] tracking-tight flex items-baseline">
+                    <span class="text-[#38bdf8] font-bold italic mr-1">ZIP</span>
+                    <span class="text-gray-200 font-light">schedules&reg;</span>
+                </div>
+            </div>
+
+            <!-- Input Fields -->
+            <div class="w-full max-w-[280px] space-y-6">
+               <div class="flex items-center border-b border-gray-400 pb-2 space-x-3">
+                  <i data-lucide="mail" class="text-gray-400 w-5 h-5"></i>
+                  <input type="email" placeholder="Email ID" class="bg-transparent w-full text-white placeholder-gray-500 focus:outline-none text-sm">
+               </div>
+               <div class="flex items-center border-b border-gray-400 pb-2 space-x-3">
+                  <i data-lucide="lock" class="text-gray-400 w-5 h-5"></i>
+                  <input type="password" placeholder="Password" class="bg-transparent w-full text-white placeholder-gray-500 focus:outline-none text-sm">
+               </div>
+               
+               <!-- Links -->
+               <div class="flex justify-between text-[#38bdf8] text-[13px] pt-1">
+                  <a href="#" class="hover:text-white transition-colors">Need Support?</a>
+                  <a href="#" class="hover:text-white transition-colors">Forgot Your Password?</a>
                </div>
             </div>
-             <div class="bg-[#3a3f4d] rounded-2xl p-5 shadow-lg border border-gray-600/30">
-               <div class="flex items-center justify-between">
-                  <div class="flex items-center space-x-3">
-                     <div class="w-10 h-10 bg-indigo-500/20 rounded-full flex items-center justify-center text-indigo-400">
-                         <i data-lucide="user" class="w-5 h-5"></i>
-                     </div>
-                     <div>
-                        <p class="text-white font-medium">Profile Settings</p>
-                        <p class="text-gray-400 text-xs">Update your information</p>
-                     </div>
-                  </div>
-                  <i data-lucide="chevron-right" class="w-5 h-5 text-gray-500"></i>
-               </div>
-            </div>
-             <div class="bg-[#3a3f4d] rounded-2xl p-5 shadow-lg border border-gray-600/30">
-               <div class="flex items-center justify-between">
-                  <div class="flex items-center space-x-3">
-                     <div class="w-10 h-10 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-400">
-                         <i data-lucide="settings" class="w-5 h-5"></i>
-                     </div>
-                     <div>
-                        <p class="text-white font-medium">Preferences</p>
-                        <p class="text-gray-400 text-xs">Manage app settings</p>
-                     </div>
-                  </div>
-                  <i data-lucide="chevron-right" class="w-5 h-5 text-gray-500"></i>
-               </div>
-            </div>
+
+            <!-- Action Buttons -->
+            <button onclick="handleLoginAttempt()" class="w-full max-w-[280px] bg-[#38bdf8] text-white rounded-full py-3.5 mt-10 font-medium hover:bg-[#32a8de] transition-colors shadow-lg shadow-blue-500/20">
+                Login
+            </button>
+            <button class="text-[#38bdf8] text-[13px] font-medium mt-6 hover:text-white transition-colors">
+                Login with Phone No.
+            </button>
           </main>
         </div>
 
-        <!-- Popup Wrapper -->
-        <div id="popup-wrapper" class="absolute inset-0 flex items-center justify-center p-4 sm:p-6 z-50">
+        <!-- ========================================== -->
+        <!-- VIEW 2: HOME SCREEN (Hidden Initially)     -->
+        <!-- ========================================== -->
+        <div id="home-view" class="hidden flex-grow flex-col bg-[#f4f6f9] h-full relative">
+           <!-- Top Header Bar -->
+           <header class="bg-[#393e4f] pt-14 pb-0 px-4 flex flex-col shrink-0">
+              <div class="flex justify-between items-center mb-6 px-1">
+                 <div class="flex items-center space-x-4">
+                    <button class="text-[#38bdf8]">
+                        <i data-lucide="menu" class="w-7 h-7" style="stroke-width: 2.5px;"></i>
+                    </button>
+                    <h1 class="text-white font-semibold text-lg tracking-wide">Zip Schedules</h1>
+                 </div>
+                 <div class="relative">
+                    <i data-lucide="message-square-more" class="text-white w-7 h-7" style="stroke-width: 1.5px;"></i>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full border border-[#393e4f]">14</span>
+                 </div>
+              </div>
+
+              <!-- Navigation Tabs -->
+              <div class="flex justify-between text-gray-400 text-[11px] font-medium px-2">
+                 <div class="flex flex-col items-center pb-2 border-b-[3px] border-[#38bdf8] text-white w-1/3 cursor-pointer">
+                    <i data-lucide="layout-grid" class="w-6 h-6 mb-1 text-white" style="stroke-width: 1.5px;"></i>
+                    <span>Requests</span>
+                 </div>
+                 <div class="flex flex-col items-center pb-2 w-1/3 cursor-pointer hover:text-white transition-colors">
+                    <i data-lucide="calendar-days" class="w-6 h-6 mb-1" style="stroke-width: 1.5px;"></i>
+                    <span>Site Schedule</span>
+                 </div>
+                 <div class="flex flex-col items-center pb-2 w-1/3 cursor-pointer hover:text-white transition-colors">
+                    <i data-lucide="calendar-user" class="w-6 h-6 mb-1" style="stroke-width: 1.5px;"></i>
+                    <span>My Schedule</span>
+                 </div>
+              </div>
+           </header>
+
+           <!-- Home Dashboard Content -->
+           <div class="flex-grow overflow-y-auto px-5 py-6 custom-scrollbar pb-12">
+              
+              <!-- Needing Action Section -->
+              <h2 class="text-center text-gray-500 font-bold text-sm mb-4">Needing Action</h2>
+              <div class="bg-white rounded-lg shadow-sm border border-gray-100 relative flex flex-col items-center mx-auto w-[65%] mb-8 overflow-visible">
+                 <!-- Badge -->
+                 <div class="absolute -top-3 -right-3 bg-[#60b3f7] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shadow-md">3</div>
+                 <!-- Icon Area -->
+                 <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center my-6 border border-gray-100">
+                    <i data-lucide="arrow-left-right" class="text-[#60b3f7] w-8 h-8"></i>
+                 </div>
+                 <!-- Bottom Strip -->
+                 <div class="bg-[#60b3f7] w-full text-center text-white py-2 text-sm font-medium rounded-b-lg">Available Shifts</div>
+              </div>
+
+              <!-- Awaiting Action Section -->
+              <h2 class="text-center text-gray-500 font-bold text-sm mb-4">Awaiting Action from Others</h2>
+              <div class="grid grid-cols-2 gap-4">
+                 
+                 <!-- Card 1: Time Off -->
+                 <div class="bg-white rounded-lg shadow-sm border border-gray-100 relative flex flex-col items-center overflow-visible">
+                     <div class="absolute -top-3 -right-3 bg-[#60b3f7] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shadow-md">2</div>
+                     <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center my-5 border border-gray-100">
+                        <i data-lucide="umbrella" class="text-[#60b3f7] w-7 h-7"></i>
+                     </div>
+                     <div class="bg-[#60b3f7] w-full text-center text-white py-1.5 text-[13px] font-medium rounded-b-lg">Time Off</div>
+                 </div>
+
+                 <!-- Card 2: Available Shifts -->
+                 <div class="bg-white rounded-lg shadow-sm border border-gray-100 relative flex flex-col items-center overflow-visible">
+                     <div class="absolute -top-3 -right-3 bg-[#60b3f7] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shadow-md">0</div>
+                     <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center my-5 border border-gray-100">
+                        <i data-lucide="arrow-left-right" class="text-[#60b3f7] w-7 h-7"></i>
+                     </div>
+                     <div class="bg-[#60b3f7] w-full text-center text-white py-1.5 text-[13px] font-medium rounded-b-lg">Available Shifts</div>
+                 </div>
+
+                 <!-- Card 3: Shift Offered -->
+                 <div class="bg-white rounded-lg shadow-sm border border-gray-100 relative flex flex-col items-center overflow-visible">
+                     <div class="absolute -top-3 -right-3 bg-[#60b3f7] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shadow-md">0</div>
+                     <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center my-5 border border-gray-100">
+                        <i data-lucide="users" class="text-[#60b3f7] w-7 h-7"></i>
+                     </div>
+                     <div class="bg-[#60b3f7] w-full text-center text-white py-1.5 text-[13px] font-medium rounded-b-lg">Shift Offered</div>
+                 </div>
+
+                 <!-- Card 4: Availability -->
+                 <div class="bg-white rounded-lg shadow-sm border border-gray-100 relative flex flex-col items-center overflow-visible mt-2">
+                     <div class="absolute -top-3 -right-3 bg-[#60b3f7] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shadow-md">1</div>
+                     <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center my-5 border border-gray-100">
+                        <i data-lucide="calendar-clock" class="text-[#60b3f7] w-7 h-7"></i>
+                     </div>
+                     <div class="bg-[#60b3f7] w-full text-center text-white py-1.5 text-[13px] font-medium rounded-b-lg">Availability</div>
+                 </div>
+
+              </div>
+           </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- POPUP WRAPPER (Visible Initially)          -->
+        <!-- ========================================== -->
+        <div id="popup-wrapper" class="absolute inset-0 flex items-center justify-center p-4 sm:p-6 z-50 mt-4" style="display: flex;">
           
           <!-- Popup Card -->
           <div class="bg-white rounded-[2rem] w-full max-w-[350px] h-[80%] max-h-[700px] flex flex-col shadow-2xl relative overflow-hidden">
@@ -121,7 +223,7 @@
             <!-- Header Section (Fixed at top) -->
             <div class="pt-8 pb-4 px-6 sm:px-8 shrink-0 bg-white z-10 relative">
               <div class="flex justify-center mb-6">
-                 <!-- Altametrics Logo SVG -->
+                 <!-- Altametrics Logo using generated SVG/text (Dark version for light bg) -->
                  <div class="flex items-center space-x-2">
                     <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="20" cy="20" r="18" stroke="#111827" stroke-width="2.5"/>
@@ -242,22 +344,63 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
+        // On page load, check if user already accepted terms
+        window.onload = function() {
+            const hasAccepted = sessionStorage.getItem('altametrics_terms_accepted');
+            
+            if (hasAccepted === 'true') {
+                // If they already accepted in this session, go straight to home screen
+                document.getElementById('popup-wrapper').style.display = 'none';
+                document.getElementById('login-view').classList.add('hidden');
+                document.getElementById('login-view').classList.remove('flex');
+                document.getElementById('home-view').classList.remove('hidden');
+                document.getElementById('home-view').classList.add('flex');
+            } else {
+                // By default, show popup (which is already set in HTML), ensure login is dimmed
+                showPopup();
+            }
+        };
+
+        // Helper to show popup and dim login
+        function showPopup() {
+            document.getElementById('popup-wrapper').style.display = 'flex';
+            const loginView = document.getElementById('login-view');
+            loginView.classList.remove('opacity-100');
+            loginView.classList.add('opacity-30', 'pointer-events-none');
+        }
+
+        // Handle clicking Login button on the form
+        function handleLoginAttempt() {
+            // Re-show the consent popup simulating successful credentials
+            showPopup();
+        }
+
         // Handle Accept Action
         function handleAccept() {
-            // Hide the popup
+            // Save state so a refresh keeps them logged in
+            sessionStorage.setItem('altametrics_terms_accepted', 'true');
+
+            // Hide Popup
             document.getElementById('popup-wrapper').style.display = 'none';
             
-            // Remove opacity and pointer-events classes from main content
-            const mainContent = document.getElementById('main-content');
-            mainContent.classList.remove('opacity-30', 'pointer-events-none');
-            mainContent.classList.add('opacity-100');
+            // Hide Login Screen
+            document.getElementById('login-view').classList.add('hidden');
+            document.getElementById('login-view').classList.remove('flex');
+            
+            // Show Home Screen
+            document.getElementById('home-view').classList.remove('hidden');
+            document.getElementById('home-view').classList.add('flex');
         }
 
         // Handle Decline Action
         function handleDecline() {
-            console.log("Declined Terms");
-            // Add custom logic for decline here if needed
-            // For example: alert("You must accept the terms to continue.");
+            // Hide Popup
+            document.getElementById('popup-wrapper').style.display = 'none';
+            
+            // Restore Login Screen (make it interactive)
+            const loginView = document.getElementById('login-view');
+            loginView.classList.remove('opacity-30', 'pointer-events-none');
+            loginView.classList.add('opacity-100');
         }
     </script>
 </body>
