@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Altametrics Consent Screen</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-900 flex items-center justify-center p-4 font-sans text-gray-800">
+
+    <!-- iPhone 16 Frame Container -->
+    <div class="relative w-full max-w-[393px] h-[852px] bg-[#2d313c] rounded-[3rem] overflow-hidden shadow-[0_0_0_12px_#111,0_20px_50px_rgba(0,0,0,0.5)] flex flex-col">
+        
+        <!-- iOS Status Bar -->
+        <div class="flex justify-between items-center px-8 pt-4 pb-2 text-white text-[15px] font-medium z-10 shrink-0">
+           <span class="tracking-tight ml-1">10:39</span>
+           <div class="flex items-center space-x-1.5 mr-1">
+             <!-- Cellular -->
+             <div class="flex space-x-[2px] items-end h-2.5 mb-0.5">
+               <div class="w-[3px] h-1.5 bg-white rounded-sm"></div>
+               <div class="w-[3px] h-2 bg-white rounded-sm"></div>
+               <div class="w-[3px] h-2.5 bg-white rounded-sm"></div>
+               <div class="w-[3px] h-3 bg-white/40 rounded-sm"></div>
+             </div>
+             <!-- Battery -->
+             <div class="flex items-center ml-1">
+                <div class="w-6 h-3 border border-white/40 rounded-[4px] p-[1px] flex relative">
+                    <div class="bg-white w-[75%] h-full rounded-[2px]"></div>
+                </div>
+                <div class="w-[2px] h-1 bg-white/40 rounded-r-sm ml-[1px]"></div>
+             </div>
+           </div>
+        </div>
+
+        <!-- Background App UI -->
+        <!-- Note: Has opacity-30 and pointer-events-none initially because popup is open -->
+        <div id="main-content" class="flex-grow px-6 flex flex-col transition-opacity duration-300 opacity-30 pointer-events-none">
+          
+          <!-- Header -->
+          <header class="flex justify-between items-center py-6 border-b border-gray-700/50">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 rounded-full border-2 border-white/80 flex items-center justify-center">
+                 <span class="text-white/80 font-bold text-xs">A</span>
+              </div>
+              <div class="flex flex-col">
+                 <span class="text-white font-bold text-lg leading-tight">Altametrics</span>
+                 <span class="text-blue-400 text-[10px] uppercase font-bold tracking-wider">Growth <span class="text-gray-400 font-normal lowercase tracking-normal">v10.1</span></span>
+              </div>
+            </div>
+            <button class="p-2 text-indigo-400 hover:text-indigo-300 transition-colors">
+              <i data-lucide="menu" class="w-7 h-7" style="stroke-width: 2.5px;"></i>
+            </button>
+          </header>
+
+          <!-- Dummy Content -->
+          <main class="flex-grow py-8 space-y-6">
+            <div class="bg-[#3a3f4d] rounded-2xl p-5 shadow-lg border border-gray-600/30">
+               <h3 class="text-white font-semibold mb-4 text-lg">Dashboard Overview</h3>
+               <div class="space-y-4">
+                  <div class="h-4 bg-gray-600/50 rounded-full w-3/4"></div>
+                  <div class="h-4 bg-gray-600/50 rounded-full w-1/2"></div>
+                  <div class="h-4 bg-gray-600/50 rounded-full w-5/6"></div>
+               </div>
+            </div>
+             <div class="bg-[#3a3f4d] rounded-2xl p-5 shadow-lg border border-gray-600/30">
+               <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-3">
+                     <div class="w-10 h-10 bg-indigo-500/20 rounded-full flex items-center justify-center text-indigo-400">
+                         <i data-lucide="user" class="w-5 h-5"></i>
+                     </div>
+                     <div>
+                        <p class="text-white font-medium">Profile Settings</p>
+                        <p class="text-gray-400 text-xs">Update your information</p>
+                     </div>
+                  </div>
+                  <i data-lucide="chevron-right" class="w-5 h-5 text-gray-500"></i>
+               </div>
+            </div>
+             <div class="bg-[#3a3f4d] rounded-2xl p-5 shadow-lg border border-gray-600/30">
+               <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-3">
+                     <div class="w-10 h-10 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-400">
+                         <i data-lucide="settings" class="w-5 h-5"></i>
+                     </div>
+                     <div>
+                        <p class="text-white font-medium">Preferences</p>
+                        <p class="text-gray-400 text-xs">Manage app settings</p>
+                     </div>
+                  </div>
+                  <i data-lucide="chevron-right" class="w-5 h-5 text-gray-500"></i>
+               </div>
+            </div>
+          </main>
+        </div>
+
+        <!-- Popup Wrapper -->
+        <div id="popup-wrapper" class="absolute inset-0 flex items-center justify-center p-4 sm:p-6 z-50">
+          
+          <!-- Popup Card -->
+          <div class="bg-white rounded-[2rem] w-full max-w-[350px] h-[80%] max-h-[700px] flex flex-col shadow-2xl relative overflow-hidden">
+            
+            <!-- Header Section (Fixed at top) -->
+            <div class="pt-8 pb-4 px-6 sm:px-8 shrink-0 bg-white z-10 relative">
+              <div class="flex justify-center mb-6">
+                 <!-- Altametrics Logo SVG -->
+                 <div class="flex items-center space-x-2">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="20" cy="20" r="18" stroke="#111827" stroke-width="2.5"/>
+                      <path d="M20 8L10 28H15L20 16L25 28H30L20 8Z" fill="#111827"/>
+                    </svg>
+                    <div class="flex flex-col">
+                      <span class="text-xl font-bold text-gray-900 leading-none tracking-tight">Altametrics</span>
+                      <span class="text-[10px] text-blue-600 font-bold tracking-widest text-right leading-tight mt-[1px]">GROWTH</span>
+                    </div>
+                 </div>
+              </div>
+              <h2 class="text-xl font-semibold text-center text-gray-900 mb-6">Terms & Conditions</h2>
+              
+              <!-- Fixed Privacy Info -->
+              <div class="text-left mt-2">
+                  <h3 class="text-[13px] font-bold text-gray-900 mb-1.5 tracking-wide">Privacy Policy</h3>
+                  <p class="text-[12px] text-gray-600">
+                      <span class="font-semibold text-gray-800">Version:</span> v1.1 <span class="mx-1.5 text-gray-300">|</span> <span class="font-semibold text-gray-800">Effective Date:</span> 01 Jan 2026
+                  </p>
+              </div>
+            </div>
+
+            <!-- Top Divider -->
+            <div class="px-6 sm:px-8 z-10 shrink-0 bg-white">
+                <div class="h-[1px] bg-gray-200 w-full"></div>
+            </div>
+
+            <!-- Scrollable Content -->
+            <div class="flex-grow overflow-y-auto px-6 sm:px-8 py-5 custom-scrollbar bg-white text-left text-[13px] leading-relaxed text-gray-700">
+              <p class="mb-5 text-gray-600">
+                We value your privacy. This policy explains how we collect, use, and protect your personal information when you use our application.
+              </p>
+              
+              <div class="space-y-5">
+                <div>
+                  <h3 class="font-bold text-gray-900 mb-2">1. Information We Collect</h3>
+                  <ul class="list-disc pl-4 space-y-1.5 text-gray-600 marker:text-gray-400">
+                    <li>Account details (name, email address, phone number)</li>
+                    <li>Usage data and activity logs</li>
+                    <li>Device and browser information</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 class="font-bold text-gray-900 mb-2">2. How We Use Your Information</h3>
+                  <ul class="list-disc pl-4 space-y-1.5 text-gray-600 marker:text-gray-400">
+                    <li>To provide and improve our services</li>
+                    <li>To personalize your experience</li>
+                    <li>To ensure security and prevent fraud</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 class="font-bold text-gray-900 mb-2">3. Data Security</h3>
+                  <p class="text-gray-600">
+                    We implement industry-standard security measures to protect your data against unauthorized access, alteration, or disclosure.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 class="font-bold text-gray-900 mb-2">4. Your Rights</h3>
+                  <ul class="list-disc pl-4 space-y-1.5 text-gray-600 marker:text-gray-400">
+                    <li>You may request access to your data</li>
+                    <li>You may request deletion of your data</li>
+                    <li>You may update your information at any time</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 class="font-bold text-gray-900 mb-2">5. Policy Updates</h3>
+                  <p class="text-gray-600">
+                    We may update this policy periodically. You will be asked to accept the updated version to continue using the application.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Divider -->
+            <div class="px-6 sm:px-8 z-10 shrink-0 bg-white">
+                <div class="h-[1px] bg-gray-200 w-full"></div>
+            </div>
+
+            <!-- Footer Section (Fixed at bottom) -->
+            <div class="px-6 sm:px-8 pt-4 pb-6 sm:pb-8 shrink-0 bg-white z-10 relative">
+                <!-- Fixed Acceptance Sentence -->
+                <p class="text-[11px] text-gray-500 mb-5 text-left leading-tight">
+                    By clicking <span class="font-bold text-gray-700">"Accept"</span>, you agree to this Privacy Policy.
+                </p>
+
+                <div class="flex items-center justify-between space-x-4">
+                    <button 
+                        onclick="handleDecline()"
+                        class="flex-1 py-3 px-4 text-[#e36d7a] font-semibold text-[15px] bg-transparent rounded-full hover:bg-red-50/50 transition-colors focus:outline-none"
+                    >
+                        Decline
+                    </button>
+                    <button 
+                        onclick="handleAccept()"
+                        class="flex-1 py-3 px-4 text-white font-semibold text-[15px] bg-[#66cc99] rounded-full shadow-md hover:bg-[#5bb88a] transition-all transform active:scale-95 focus:outline-none"
+                    >
+                        Accept
+                    </button>
+                </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- iOS Home Indicator -->
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center z-50 pointer-events-none">
+            <div class="w-[120px] h-[5px] bg-white/80 rounded-full"></div>
+        </div>
+
+    </div> <!-- End iPhone Frame -->
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Handle Accept Action
+        function handleAccept() {
+            // Hide the popup
+            document.getElementById('popup-wrapper').style.display = 'none';
+            
+            // Remove opacity and pointer-events classes from main content
+            const mainContent = document.getElementById('main-content');
+            mainContent.classList.remove('opacity-30', 'pointer-events-none');
+            mainContent.classList.add('opacity-100');
+        }
+
+        // Handle Decline Action
+        function handleDecline() {
+            console.log("Declined Terms");
+            // Add custom logic for decline here if needed
+            // For example: alert("You must accept the terms to continue.");
+        }
+    </script>
+</body>
+</html>
